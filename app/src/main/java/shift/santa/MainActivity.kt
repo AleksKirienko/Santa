@@ -15,13 +15,14 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         Button1.setOnClickListener {
-            startActivity(Intent(this, ActivityTwo::class.java))
+            val intentEx = setInetentParam(true)
+            startActivity(intentEx)
         }
     }
 
-    /*fun toastMe(view: View) {
-        val myToast = Toast.makeText(this, "Hello", Toast.LENGTH_SHORT)
-
-        myToast.show()
-    }*/
+    private fun setInetentParam(isCreator: Boolean): Intent {
+        val intent = Intent(this, ActivityTwo::class.java)
+        intent.putExtra(ActivityTwo.IS_GROUP_CREATOR, isCreator)
+        return intent
+    }
 }
