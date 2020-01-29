@@ -5,6 +5,8 @@ import android.content.Context
 import shift.santa.App
 import shift.santa.features.books.data.BooksRepositoryImpl
 import shift.santa.features.books.data.GroupApi
+import shift.santa.features.books.domain.model.Book
+import shift.santa.network.Carry
 
 /**
  * Created: samokryl

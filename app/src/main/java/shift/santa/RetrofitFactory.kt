@@ -14,7 +14,6 @@ internal object RetrofitFactory {
         val logInterceptor = HttpLoggingInterceptor()
         logInterceptor.level = HttpLoggingInterceptor.Level.BODY
 
-
         val interceptorList = ArrayList<Interceptor>()
         interceptorList.add(logInterceptor)
 

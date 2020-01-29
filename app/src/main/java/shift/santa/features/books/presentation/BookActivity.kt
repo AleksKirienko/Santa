@@ -10,6 +10,8 @@ import android.widget.Toast
 
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_two.*
 import shift.santa.ActivityThree
 import shift.santa.ActivityTwo
 

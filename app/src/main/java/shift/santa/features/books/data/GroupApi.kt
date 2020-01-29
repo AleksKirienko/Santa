@@ -16,13 +16,13 @@ interface GroupApi {
     @GET("api/v001/groups")
     fun getGroup(): Call<List<Group>>
 
-    @GET("/{groupId}")
-    fun getBook(@Path("id") id: String): Call<Book>
+    @GET("groups/{groupId}")
+    fun getGroup(@Path("id") id: String): Call<Group>
 
-    @POST("books")
-    fun createBook(@Body book: Book): Call<Book>
+    @POST("groups")
+    fun createGroup(@Body group: Group): Call<Group>
 
-    @DELETE("books/{id}")
-    fun deleteBook(@Path("id") id: String): Call<Success>
+    @DELETE("groups/{id}")
+    fun deleteGroup(@Path("id") id: String): Call<Success>
 
 }

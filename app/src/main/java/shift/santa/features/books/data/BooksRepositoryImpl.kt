@@ -13,16 +13,16 @@ class BooksRepositoryImpl(private val groupApi: GroupApi) : BooksRepository {
         groupApi.getGroup().enqueue(DefaultCallback(carry))
     }
 
-    override fun loadBook(id: String, carry: Carry<Book>) {
-        groupApi.getBook(id).enqueue(DefaultCallback(carry))
+    override fun loadGroup(id: String, carry: Carry<Group>) {
+        groupApi.getGroup(id).enqueue(DefaultCallback(carry))
     }
 
-    override fun createBook(book: Book, carry: Carry<Book>) {
-        groupApi.createBook(book).enqueue(DefaultCallback(carry))
+    override fun createGroup(group: Group, carry: Carry<Group>) {
+        groupApi.createGroup(group).enqueue(DefaultCallback(carry))
     }
 
-    override fun deleteBook(id: String, carry: Carry<Success>) {
-        groupApi.deleteBook(id).enqueue(DefaultCallback(carry))
+    override fun deleteGroup(id: String, carry: Carry<Success>) {
+        groupApi.deleteGroup(id).enqueue(DefaultCallback(carry))
     }
 
 }

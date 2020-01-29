@@ -1,6 +1,5 @@
 package shift.santa.features.books.domain
 
-import shift.santa.features.books.domain.model.Book
 import shift.santa.features.books.domain.model.Group
 import shift.santa.features.books.domain.model.Success
 import shift.santa.network.Carry
@@ -15,9 +14,9 @@ interface BooksRepository {
 
     fun loadGroups(carry: Carry<List<Group>>)
 
-    fun loadBook(id: String, carry: Carry<Book>)
+    fun loadGroup(id: String, carry: Carry<Group>)
 
-    fun createBook(book: Book, carry: Carry<Book>)
+    fun createGroup(group: Group, carry: Carry<Group>)
 
-    fun deleteBook(id: String, carry: Carry<Success>)
+    fun deleteGroup(id: String, carry: Carry<Success>)
 }

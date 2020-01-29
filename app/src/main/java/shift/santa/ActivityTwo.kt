@@ -5,8 +5,14 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_two.*
+import shift.santa.features.books.presentation.BookActivity
+import shift.santa.features.books.presentation.BookListPresenter
 
 class ActivityTwo : AppCompatActivity() {
+
+    var fieldName: String? = null
+    var fieldLikes: String? = null
+    var fieldDislikes: String? = null
 
     companion object {
         const val IS_GROUP_CREATOR = "is_group_creator"
@@ -17,27 +23,18 @@ class ActivityTwo : AppCompatActivity() {
         setContentView(R.layout.activity_two)
 
         button.setOnClickListener{
-            if (editText2.text.toString() == "" ||
-                editText3.text.toString() == "" ||
-                editText4.text.toString() == "") {
+
+            fieldName = editText2.text.toString()
+            fieldLikes = editText3.text.toString()
+            fieldDislikes = editText4.text.toString()
+
+            if (fieldName == "" || fieldLikes == "" || fieldDislikes == "") {
 
                 Toast.makeText(this, "Вы заполнили не все поля", Toast.LENGTH_SHORT).show()
             }
             else {
-                val intentEx = setInetentParam(
-                    intent.getBooleanExtra(
-                        WaitActivity.IS_GROUP_CREATOR,
-                        false
-                    )
-                )
-                startActivity(intentEx)
+                startActivity(Intent(this, BookActivity::class.java))
             }
         }
-    }
-
-    private fun setInetentParam(isCreator: Boolean): Intent {
-        val intent = Intent(this, WaitActivity::class.java)
-        intent.putExtra(WaitActivity.IS_GROUP_CREATOR, isCreator)
-        return intent
     }
 }
