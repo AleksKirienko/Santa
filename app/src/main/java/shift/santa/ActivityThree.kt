@@ -4,12 +4,15 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import kotlinx.android.synthetic.main.activity_give_present.*
 import kotlinx.android.synthetic.main.books_activity.*
 
 class ActivityThree : AppCompatActivity() {
 
     companion object {
-        const val IS_GROUP_CREATOR = "is_group_creator"
+        const val NAME = "name"
+        const val LIKES = "likes"
+        const val DISLIKES = "dislikes"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

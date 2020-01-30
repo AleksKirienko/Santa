@@ -6,10 +6,10 @@ import com.google.gson.annotations.SerializedName
 data class Group(
     @SerializedName("countPeople")
     val countPeople: Int,
-    @SerializedName("creator")
-    val creator: Creator,
-    @SerializedName("id")
-    val id: Int,
+    @SerializedName("id_user")
+    val idUser: Long,
     @SerializedName("name")
-    val name: String
+    val name: String,
+    @SerializedName("id")
+    val id: Long
 )

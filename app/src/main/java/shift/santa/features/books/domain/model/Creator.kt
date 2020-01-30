@@ -7,7 +7,7 @@ data class Creator(
     @SerializedName("dislikes")
     val dislikes: String,
     @SerializedName("id")
-    val id: Int,
+    val id: Long,
     @SerializedName("likes")
     val likes: String,
     @SerializedName("name")

@@ -10,19 +10,21 @@ import android.widget.Toast
 
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.activity_two.*
 import shift.santa.ActivityThree
-import shift.santa.ActivityTwo
+import shift.santa.GivePresentActivity
 
 import shift.santa.R
 import shift.santa.features.BaseActivity
 import shift.santa.features.MvpPresenter
-import shift.santa.features.MvpView
-import shift.santa.features.books.domain.model.Book
+import shift.santa.features.activitytwo.ActivityTwo
 import shift.santa.features.books.domain.model.Group
 
 class BookActivity : BaseActivity<BookListView>(), BookListView {
+
+    private companion object {
+
+        const val ACTIVITY_TWO_REQUEST_CODE = 111
+    }
 
     private var progressBar: ProgressBar? = null
     private var recyclerView: RecyclerView? = null
@@ -42,19 +44,33 @@ class BookActivity : BaseActivity<BookListView>(), BookListView {
         initView()
     }
 
+    /*adapter = BookAdapter(this, object : BookAdapter.SelectBookListener {
+            override fun onBookSelect(book: Book) {
+                presenter!!.onBookSelected(book)
+            }
+
+            override fun onBookLongClick(book: Book) {
+                presenter!!.onBookLongClicked(book)
+            }
+        })*/
+
     private fun initView() {
         progressBar = findViewById(R.id.books_progress)
         recyclerView = findViewById(R.id.books_recycle_view)
         createBookButton = findViewById(R.id.create_button)
 
-        createBookButton!!.setOnClickListener { presenter!!.onCreateBookClicked() }
+        createBookButton!!.setOnClickListener {
+            startActivityForResult(Intent(this, ActivityTwo::class.java), ACTIVITY_TWO_REQUEST_CODE)
+        }
 
         adapter = BookAdapter(this, object : BookAdapter.SelectBookListener {
 
-            override fun onBookSelect(book: Group) {
+            override fun onBookSelect(group: Group) {
+
+                presenter!!.onBookSelected(group)
                 //new activity 3 page for id group
-                val intentEx = group_selection(true)
-                startActivity(intentEx)
+                /*val intentEx = group_selection(true)
+                startActivity(intentEx)*/
             }
 
         })
@@ -63,8 +79,9 @@ class BookActivity : BaseActivity<BookListView>(), BookListView {
         recyclerView!!.layoutManager = LinearLayoutManager(this)
     }
     private fun group_selection(isCreator: Boolean): Intent {
-        val intent = Intent(this, ActivityThree::class.java)
-        intent.putExtra(ActivityThree.IS_GROUP_CREATOR, isCreator)
+        val intent = Intent(this, GivePresentActivity::class.java)
+
+        //intent.putExtra(ActivityThree.IS_GROUP_CREATOR, isCreator)
         return intent
     }
 
@@ -74,8 +91,8 @@ class BookActivity : BaseActivity<BookListView>(), BookListView {
     }
 
     override fun hideProgress() {
-        progressBar!!.visibility = View.GONE
-        recyclerView!!.visibility = View.VISIBLE
+        progressBar?.visibility = View.GONE
+        recyclerView?.visibility = View.VISIBLE
     }
 
     override fun showBookList(list: List<Group>) {
@@ -91,11 +108,29 @@ class BookActivity : BaseActivity<BookListView>(), BookListView {
         return presenter!!
     }
 
-    companion object {
+    /*companion object {
 
         fun start(context: Context) {
             val intent = Intent(context, BookActivity::class.java)
+            //intent.putExtra()
             context.startActivity(intent)
         }
+    }*/
+
+    override fun openActivity(name: String, likes: String, dislikes: String) {
+        val intent = Intent(this, GivePresentActivity::class.java)
+
+        intent.putExtra(GivePresentActivity.NAME, name)
+        intent.putExtra(GivePresentActivity.LIKES, likes)
+        intent.putExtra(GivePresentActivity.DISLIKES, dislikes)
+
+        startActivity(intent)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (requestCode == ACTIVITY_TWO_REQUEST_CODE && resultCode == RESULT_OK) {
+               presenter?.loadBooks()
+        }
+        super.onActivityResult(requestCode, resultCode, data)
     }
 }

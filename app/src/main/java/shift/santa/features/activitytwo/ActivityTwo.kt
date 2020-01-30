@@ -1,22 +1,24 @@
-package shift.santa
+package shift.santa.features.activitytwo
 
+import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_two.*
+import shift.santa.R
+import shift.santa.features.BaseActivity
+import shift.santa.features.MvpPresenter
 import shift.santa.features.books.presentation.BookActivity
-import shift.santa.features.books.presentation.BookListPresenter
+import shift.santa.features.books.presentation.PresenterFactory
 
-class ActivityTwo : AppCompatActivity() {
+class ActivityTwo : BaseActivity<TwoView>(), TwoView {
 
     var fieldName: String? = null
     var fieldLikes: String? = null
     var fieldDislikes: String? = null
 
-    companion object {
-        const val IS_GROUP_CREATOR = "is_group_creator"
-    }
+    lateinit var presenter: TwoPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,8 +35,26 @@ class ActivityTwo : AppCompatActivity() {
                 Toast.makeText(this, "Вы заполнили не все поля", Toast.LENGTH_SHORT).show()
             }
             else {
-                startActivity(Intent(this, BookActivity::class.java))
+                presenter.onClick(fieldName!!, fieldLikes!!.toInt(), fieldDislikes!!.toLong())
             }
         }
+    }
+
+    override fun goBackSuccess() {
+        setResult(Activity.RESULT_OK)
+        finish()
+    }
+
+    override fun showError(error: String) {
+        Toast.makeText(this, error, Toast.LENGTH_LONG).show()
+    }
+
+    override fun getMvpPresenter(): MvpPresenter<TwoView> {
+        presenter = PresenterFactory.createPresenterTwo(this)
+        return presenter
+    }
+
+    override fun getMvpView(): TwoView {
+        return this
     }
 }

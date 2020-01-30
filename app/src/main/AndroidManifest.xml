@@ -15,7 +15,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".GivePresentActivity"></activity>
         <activity android:name=".WaitActivity" />
-        <activity android:name=".ActivityTwo" />
+        <activity android:name=".features.activitytwo.ActivityTwo" />
         <activity android:name=".MainActivity">
 
         </activity>
