@@ -1,7 +1,6 @@
 package shift.santa.features.books.domain
 
 import shift.santa.features.books.domain.model.Creator
-import shift.santa.features.books.domain.model.Group
 import shift.santa.features.books.domain.model.Success
 import shift.santa.network.Carry
 

@@ -16,10 +16,18 @@
 
     <Button
         android:id="@+id/create_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Создать"
+        android:layout_width="210dp"
+        android:layout_height="50dp"
+        android:layout_gravity="bottom"
         android:gravity="center"
-        android:layout_gravity="bottom" />
+        android:text="Создать группу" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="210dp"
+        android:layout_height="50dp"
+        android:layout_gravity="bottom|right"
+        android:gravity="center"
+        android:text="Выбрать случайного пользователя" />
 
 </FrameLayout>

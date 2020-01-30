@@ -2,7 +2,6 @@ package shift.santa.features.activitytwo
 
 import shift.santa.features.MvpPresenter
 import shift.santa.features.books.domain.BooksRepository
-import shift.santa.features.books.domain.model.Group
 import shift.santa.network.Carry
 
 class TwoPresenter(private val repository: BooksRepository) : MvpPresenter<TwoView>() {

@@ -1,15 +1,12 @@
 package shift.santa.features.activitytwo
 
 import android.app.Activity
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_two.*
 import shift.santa.R
 import shift.santa.features.BaseActivity
 import shift.santa.features.MvpPresenter
-import shift.santa.features.books.presentation.BookActivity
 import shift.santa.features.books.presentation.PresenterFactory
 
 class ActivityTwo : BaseActivity<TwoView>(), TwoView {

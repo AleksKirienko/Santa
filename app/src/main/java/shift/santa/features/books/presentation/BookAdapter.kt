@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.RecyclerView
 import java.util.ArrayList
 
 import shift.santa.R
-import shift.santa.features.books.domain.model.Book
 import shift.santa.features.books.domain.model.Group
 
 /**

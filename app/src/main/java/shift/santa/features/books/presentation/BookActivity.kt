@@ -1,6 +1,5 @@
 package shift.santa.features.books.presentation
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -10,7 +9,6 @@ import android.widget.Toast
 
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import shift.santa.ActivityThree
 import shift.santa.GivePresentActivity
 
 import shift.santa.R
@@ -29,6 +27,7 @@ class BookActivity : BaseActivity<BookListView>(), BookListView {
     private var progressBar: ProgressBar? = null
     private var recyclerView: RecyclerView? = null
     private var createBookButton: Button? = null
+    private var getRandomUserButton: Button? = null
     private var adapter: BookAdapter? = null
     private var presenter: BookListPresenter? = null
 
@@ -44,24 +43,17 @@ class BookActivity : BaseActivity<BookListView>(), BookListView {
         initView()
     }
 
-    /*adapter = BookAdapter(this, object : BookAdapter.SelectBookListener {
-            override fun onBookSelect(book: Book) {
-                presenter!!.onBookSelected(book)
-            }
-
-            override fun onBookLongClick(book: Book) {
-                presenter!!.onBookLongClicked(book)
-            }
-        })*/
-
     private fun initView() {
         progressBar = findViewById(R.id.books_progress)
         recyclerView = findViewById(R.id.books_recycle_view)
         createBookButton = findViewById(R.id.create_button)
+        getRandomUserButton = findViewById(R.id.button2)
 
         createBookButton!!.setOnClickListener {
             startActivityForResult(Intent(this, ActivityTwo::class.java), ACTIVITY_TWO_REQUEST_CODE)
         }
+
+        getRandomUserButton!!.setOnClickListener { presenter!!.loadUsers()}
 
         adapter = BookAdapter(this, object : BookAdapter.SelectBookListener {
 
@@ -69,20 +61,12 @@ class BookActivity : BaseActivity<BookListView>(), BookListView {
 
                 presenter!!.onBookSelected(group)
                 //new activity 3 page for id group
-                /*val intentEx = group_selection(true)
-                startActivity(intentEx)*/
             }
 
         })
 
         recyclerView!!.adapter = adapter
         recyclerView!!.layoutManager = LinearLayoutManager(this)
-    }
-    private fun group_selection(isCreator: Boolean): Intent {
-        val intent = Intent(this, GivePresentActivity::class.java)
-
-        //intent.putExtra(ActivityThree.IS_GROUP_CREATOR, isCreator)
-        return intent
     }
 
     override fun showProgress() {
@@ -107,15 +91,6 @@ class BookActivity : BaseActivity<BookListView>(), BookListView {
         presenter = PresenterFactory.createPresenter(this)
         return presenter!!
     }
-
-    /*companion object {
-
-        fun start(context: Context) {
-            val intent = Intent(context, BookActivity::class.java)
-            //intent.putExtra()
-            context.startActivity(intent)
-        }
-    }*/
 
     override fun openActivity(name: String, likes: String, dislikes: String) {
         val intent = Intent(this, GivePresentActivity::class.java)

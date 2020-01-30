@@ -10,8 +10,6 @@ import shift.santa.features.books.data.CreatorRepositoryImpl
 import shift.santa.features.books.data.GroupApi
 import shift.santa.features.books.domain.BooksRepository
 import shift.santa.features.books.domain.CreatorRepository
-import shift.santa.features.books.domain.model.Book
-import shift.santa.network.Carry
 
 /**
  * Created: samokryl

@@ -1,9 +1,7 @@
 package shift.santa.features.books.presentation
 
 
-import android.content.Intent
 import shift.santa.features.MvpView
-import shift.santa.features.books.domain.model.Book
 import shift.santa.features.books.domain.model.Group
 
 /**

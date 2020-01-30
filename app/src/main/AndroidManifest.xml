@@ -14,11 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".GivePresentActivity"></activity>
-        <activity android:name=".WaitActivity" />
-        <activity android:name=".features.activitytwo.ActivityTwo" />
-        <activity android:name=".MainActivity">
 
-        </activity>
         <activity android:name=".features.books.presentation.BookActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -1,10 +1,8 @@
 package shift.santa
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_give_present.*
-import kotlinx.android.synthetic.main.activity_wait.*
 
 class GivePresentActivity : AppCompatActivity() {
     companion object {
@@ -21,10 +19,5 @@ class GivePresentActivity : AppCompatActivity() {
         textView3.text = intent.getStringExtra(LIKES)
         textView5.text = intent.getStringExtra(DISLIKES)
 
-        button3.setOnClickListener {
-            startActivity(Intent(this, MainActivity::class.java))
-
-
-        }
-    }
+   }
 }
