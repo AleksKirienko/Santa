@@ -5,7 +5,7 @@ import shift.santa.features.books.domain.BooksRepository
 import shift.santa.features.books.domain.CreatorRepository
 import shift.santa.features.books.domain.model.Group
 import shift.santa.features.books.domain.model.Creator
-import shift.santa.features.books.presentation.PresenterFactory.userRepository
+import shift.santa.features.books.domain.model.Success
 import shift.santa.network.Carry
 
 internal class BookListPresenter(private val userRepository: CreatorRepository, private val booksRepository: BooksRepository) :
@@ -65,9 +65,6 @@ internal class BookListPresenter(private val userRepository: CreatorRepository, 
                         view!!.showError(throwable.message)
                     }
                 })
-
-
-
             }
 
             override fun onFailure(throwable: Throwable) {
@@ -75,6 +72,21 @@ internal class BookListPresenter(private val userRepository: CreatorRepository, 
                 view!!.showError(throwable.message)
             }
 
+        })
+    }
+
+    fun onBookLongClicked(group: Group) {
+        view!!.showProgress()
+        booksRepository.deleteGroup(group.id, object : Carry<Success> {
+
+            override fun onSuccess(result: Success) {
+                loadBooks()
+            }
+
+            override fun onFailure(throwable: Throwable) {
+                view!!.hideProgress()
+                view!!.showError(throwable.message)
+            }
         })
     }
 }

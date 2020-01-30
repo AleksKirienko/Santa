@@ -62,7 +62,9 @@ class BookActivity : BaseActivity<BookListView>(), BookListView {
                 presenter!!.onBookSelected(group)
                 //new activity 3 page for id group
             }
-
+            override fun onBookLongClick(group: Group) {
+                presenter!!.onBookLongClicked(group)
+            }
         })
 
         recyclerView!!.adapter = adapter

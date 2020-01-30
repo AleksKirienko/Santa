@@ -21,7 +21,7 @@ class ActivityTwo : BaseActivity<TwoView>(), TwoView {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_two)
 
-        button.setOnClickListener{
+            button.setOnClickListener{
 
             fieldName = editText2.text.toString()
             fieldLikes = editText3.text.toString()
