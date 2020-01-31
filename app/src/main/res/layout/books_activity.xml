@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background">
+    tools:ignore="ExtraText">
+
+    layoutManager.setAlignItems(AlignItems.CENTER)
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/books_recycle_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_width="247dp"
+        android:layout_height="669dp"
+        android:layout_gravity="center_horizontal"
+        android:textAlignment="center" />
 
     <ProgressBar
         android:id="@+id/books_progress"
