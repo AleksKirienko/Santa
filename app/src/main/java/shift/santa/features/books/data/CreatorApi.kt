@@ -18,5 +18,4 @@ interface CreatorApi {
 
     @DELETE("api/v001/users/{id}")
     fun deleteCreator(@Path("id") id: Long): Call<Success>
-
 }

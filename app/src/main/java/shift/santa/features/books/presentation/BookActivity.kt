@@ -17,7 +17,7 @@ import shift.santa.features.CreateUser.CreateUser
 import shift.santa.features.MvpPresenter
 import shift.santa.features.activitytwo.ActivityTwo
 import shift.santa.features.books.domain.model.Group
-import shift.santa.features.groupList.groupListActivity
+import shift.santa.features.groupList.GroupListActivity
 
 class BookActivity : BaseActivity<BookListView>(), BookListView {
 
@@ -123,8 +123,8 @@ class BookActivity : BaseActivity<BookListView>(), BookListView {
             presenter?.loadBooks()
         }
         if (requestCode == ACTIVITY_CREATE_USER_REQUEST_CODE && resultCode == RESULT_OK) {
-            val intent = Intent(this, groupListActivity::class.java)
-            intent.putExtra(groupListActivity.SELECTED_GROUP, groupIDSelected)
+            val intent = Intent(this, GroupListActivity::class.java)
+            intent.putExtra(GroupListActivity.SELECTED_GROUP, groupIDSelected)
             startActivity(intent)
         }
         super.onActivityResult(requestCode, resultCode, data)

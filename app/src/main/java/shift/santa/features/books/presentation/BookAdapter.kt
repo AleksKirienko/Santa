@@ -68,5 +68,4 @@ internal class BookAdapter(context: Context, private val selectBookListener: Sel
 
         fun onBookLongClick(group: Group)
     }
-
 }

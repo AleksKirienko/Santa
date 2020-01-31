@@ -23,5 +23,4 @@ class CreatorRepositoryImpl(private val creatorApi: CreatorApi) : CreatorReposit
     override fun loadCreator(id: Long, carry: Carry<Creator>) {
         creatorApi.getCreator(id).enqueue(DefaultCallback(carry))
     }
-
 }

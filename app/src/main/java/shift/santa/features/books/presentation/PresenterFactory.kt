@@ -11,6 +11,7 @@ import shift.santa.features.books.data.CreatorRepositoryImpl
 import shift.santa.features.books.data.GroupApi
 import shift.santa.features.books.domain.BooksRepository
 import shift.santa.features.books.domain.CreatorRepository
+import shift.santa.features.groupList.GroupListPresenter
 
 internal object PresenterFactory {
 
@@ -30,6 +31,13 @@ internal object PresenterFactory {
         val rep2 = userRepository ?: createUserRepository(context).also { userRepository = it }
 
         return CreateUserPresenter(rep2)
+    }
+
+    fun createGroupPresenter(context: Context): GroupListPresenter {
+        val rep = repository ?: createRepository(context).also { repository = it }
+        val rep2 = userRepository ?: createUserRepository(context).also { userRepository = it }
+
+        return GroupListPresenter(rep2, rep)
     }
 
     fun createPresenterTwo(context: Context): TwoPresenter {
