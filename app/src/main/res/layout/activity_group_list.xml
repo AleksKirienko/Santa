@@ -4,6 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".features.groupList.groupListActivity">
+    tools:context=".features.groupList.GroupListActivity">
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="416dp"
+        android:layout_height="726dp"
+        android:id="@+id/group_recycle_view"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

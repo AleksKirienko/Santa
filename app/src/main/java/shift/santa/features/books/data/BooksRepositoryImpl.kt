@@ -5,6 +5,7 @@ import shift.santa.features.books.domain.model.Group
 import shift.santa.features.books.domain.model.Success
 import shift.santa.network.Carry
 import shift.santa.network.DefaultCallback
+import shift.santa.features.books.domain.model.Creator
 
 class BooksRepositoryImpl(private val groupApi: GroupApi) : BooksRepository {
 
@@ -24,4 +25,7 @@ class BooksRepositoryImpl(private val groupApi: GroupApi) : BooksRepository {
         groupApi.deleteGroup(id).enqueue(DefaultCallback(carry))
     }
 
+    override fun getGroupMembers(group_id: Long, carry : Carry<List<Creator>>) {
+        groupApi.getGroupMembers(group_id).enqueue(DefaultCallback(carry))
+    }
 }

@@ -1,23 +1,13 @@
 package shift.santa.features.CreateUser
 
 import android.app.Activity
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.ProgressBar
 import android.widget.Toast
-import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.activity_create_user.*
 import shift.santa.R
 import shift.santa.features.BaseActivity
 import shift.santa.features.MvpPresenter
-import shift.santa.features.activitytwo.TwoView
-import shift.santa.features.books.presentation.BookAdapter
-import shift.santa.features.books.presentation.BookListPresenter
-import shift.santa.features.books.presentation.BookListView
 import shift.santa.features.books.presentation.PresenterFactory
-import shift.santa.features.groupList.groupListActivity
 
 class CreateUser : BaseActivity<CreateUserView>(), CreateUserView {
 
