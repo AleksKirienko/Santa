@@ -5,12 +5,6 @@ import android.content.Context
 
 import shift.santa.network.RetrofitProvider
 
-/**
- * Created: samokryl
- * Date: 01.07.18
- * Time: 22:48
- */
-
 class App : Application() {
 
     private var retrofitProvider: RetrofitProvider? = null

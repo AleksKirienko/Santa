@@ -12,12 +12,6 @@ import java.util.ArrayList
 import shift.santa.R
 import shift.santa.features.books.domain.model.Group
 
-/**
- * Created: samokryl
- * Date: 02.07.18
- * Time: 0:24
- */
-
 internal class BookAdapter(context: Context, private val selectBookListener: SelectBookListener) :
     RecyclerView.Adapter<BookAdapter.BookHolder>() {
 

@@ -1,11 +1,5 @@
 package shift.santa.features
 
-/**
- * Created: samokryl
- * Date: 02.07.18
- * Time: 0:07
- */
-
 open class MvpPresenter<View : MvpView> {
 
     protected var view: View? = null

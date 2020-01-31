@@ -11,12 +11,6 @@ import shift.santa.features.books.data.GroupApi
 import shift.santa.features.books.domain.BooksRepository
 import shift.santa.features.books.domain.CreatorRepository
 
-/**
- * Created: samokryl
- * Date: 02.07.18
- * Time: 1:03
- */
-
 internal object PresenterFactory {
 
     var repository: BooksRepository? = null
