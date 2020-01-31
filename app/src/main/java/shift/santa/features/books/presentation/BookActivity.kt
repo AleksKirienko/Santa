@@ -58,13 +58,13 @@ class BookActivity : BaseActivity<BookListView>(), BookListView {
         progressBar = findViewById(R.id.books_progress)
         recyclerView = findViewById(R.id.books_recycle_view)
         createBookButton = findViewById(R.id.create_button)
-        getRandomUserButton = findViewById(R.id.button2)
+        //getRandomUserButton = findViewById(R.id.button2)
 
         createBookButton!!.setOnClickListener {
             startActivityForResult(Intent(this, ActivityTwo::class.java), ACTIVITY_TWO_REQUEST_CODE)
         }
 
-        getRandomUserButton!!.setOnClickListener { presenter!!.loadUsers() }
+        //getRandomUserButton!!.setOnClickListener { presenter!!.loadUsers() }
 
         adapter = BookAdapter(this, object : BookAdapter.SelectBookListener {
 

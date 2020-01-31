@@ -32,7 +32,16 @@ class CreateUser : BaseActivity<CreateUserView>(), CreateUserView {
             val fieldLikes = editText5.toString()
             val fieldDislikes = editText6.toString()
 
-            presenter!!.onClick(fieldName, fieldLikes, fieldDislikes)
+            if (fieldName == "" || fieldLikes == "" || fieldDislikes == "") {
+
+                Toast.makeText(this, "Вы заполнили не все поля", Toast.LENGTH_SHORT).show()
+            }
+            else {
+                //presenter.onClick(fieldName!!, fieldLikes!!.toInt(), fieldDislikes!!.toLong())
+                presenter!!.onClick(fieldName, fieldLikes, fieldDislikes)
+            }
+
+            //presenter!!.onClick(fieldName, fieldLikes, fieldDislikes)
         }
     }
 

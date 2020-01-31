@@ -12,8 +12,10 @@ import shift.santa.features.books.presentation.PresenterFactory
 class ActivityTwo : BaseActivity<TwoView>(), TwoView {
 
     var fieldName: String? = null
-    var fieldLikes: String? = null
-    var fieldDislikes: String? = null
+    var count_people: String? = null
+    var user_id: String? = null
+    //var fieldLikes: String? = null
+    //var fieldDislikes: String? = null
 
     lateinit var presenter: TwoPresenter
 
@@ -21,18 +23,17 @@ class ActivityTwo : BaseActivity<TwoView>(), TwoView {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_two)
 
-            button.setOnClickListener{
+        button.setOnClickListener {
 
-            fieldName = editText2.text.toString()
-            fieldLikes = editText3.text.toString()
-            fieldDislikes = editText4.text.toString()
+            fieldName = editText2.toString()
+            count_people = editText3.toString()
+            user_id = editText4.text.toString()
 
-            if (fieldName == "" || fieldLikes == "" || fieldDislikes == "") {
+            if (fieldName == "" || count_people == "" || user_id == "") {
 
                 Toast.makeText(this, "Вы заполнили не все поля", Toast.LENGTH_SHORT).show()
-            }
-            else {
-                presenter.onClick(fieldName!!, fieldLikes!!.toInt(), fieldDislikes!!.toLong())
+            } else {
+                presenter.onClick(fieldName!!, count_people!!.toInt(), user_id!!.toLong())
             }
         }
     }

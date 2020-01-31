@@ -22,18 +22,10 @@
 
     <Button
         android:id="@+id/create_button"
-        android:layout_width="210dp"
-        android:layout_height="65dp"
+        android:layout_width="422dp"
+        android:layout_height="62dp"
         android:layout_gravity="bottom"
         android:gravity="center"
         android:text="Создать группу" />
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="210dp"
-        android:layout_height="65dp"
-        android:layout_gravity="bottom|right"
-        android:gravity="center"
-        android:text="Выбрать случайного пользователя" />
 
 </FrameLayout>
