@@ -38,6 +38,7 @@ class ActivityTwo : BaseActivity<TwoView>(), TwoView {
     }
 
     override fun goBackSuccess() {
+        Toast.makeText(this, "Созданная ссылка помещена в буфер обмена", Toast.LENGTH_SHORT).show()
         setResult(Activity.RESULT_OK)
         finish()
     }

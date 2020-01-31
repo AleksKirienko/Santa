@@ -13,15 +13,18 @@ import shift.santa.GivePresentActivity
 
 import shift.santa.R
 import shift.santa.features.BaseActivity
+import shift.santa.features.CreateUser.CreateUser
 import shift.santa.features.MvpPresenter
 import shift.santa.features.activitytwo.ActivityTwo
 import shift.santa.features.books.domain.model.Group
+import shift.santa.features.groupList.groupListActivity
 
 class BookActivity : BaseActivity<BookListView>(), BookListView {
 
     private companion object {
 
         const val ACTIVITY_TWO_REQUEST_CODE = 111
+        const val ACTIVITY_CREATE_USER_REQUEST_CODE = 112
     }
 
     private var progressBar: ProgressBar? = null
@@ -30,6 +33,7 @@ class BookActivity : BaseActivity<BookListView>(), BookListView {
     private var getRandomUserButton: Button? = null
     private var adapter: BookAdapter? = null
     private var presenter: BookListPresenter? = null
+    private var groupIDSelected: Long? = null
 
 
     override fun getMvpView(): BookListView {
@@ -43,6 +47,13 @@ class BookActivity : BaseActivity<BookListView>(), BookListView {
         initView()
     }
 
+    fun openCreateActivity() {
+        startActivityForResult(
+            Intent(this, CreateUser::class.java),
+            ACTIVITY_CREATE_USER_REQUEST_CODE
+        )
+    }
+
     private fun initView() {
         progressBar = findViewById(R.id.books_progress)
         recyclerView = findViewById(R.id.books_recycle_view)
@@ -53,15 +64,18 @@ class BookActivity : BaseActivity<BookListView>(), BookListView {
             startActivityForResult(Intent(this, ActivityTwo::class.java), ACTIVITY_TWO_REQUEST_CODE)
         }
 
-        getRandomUserButton!!.setOnClickListener { presenter!!.loadUsers()}
+        getRandomUserButton!!.setOnClickListener { presenter!!.loadUsers() }
 
         adapter = BookAdapter(this, object : BookAdapter.SelectBookListener {
 
             override fun onBookSelect(group: Group) {
 
-                presenter!!.onBookSelected(group)
+                //presenter!!.onBookSelected(group)
                 //new activity 3 page for id group
+                groupIDSelected = group.id
+                openCreateActivity()
             }
+
             override fun onBookLongClick(group: Group) {
                 presenter!!.onBookLongClicked(group)
             }
@@ -106,7 +120,12 @@ class BookActivity : BaseActivity<BookListView>(), BookListView {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (requestCode == ACTIVITY_TWO_REQUEST_CODE && resultCode == RESULT_OK) {
-               presenter?.loadBooks()
+            presenter?.loadBooks()
+        }
+        if (requestCode == ACTIVITY_CREATE_USER_REQUEST_CODE && resultCode == RESULT_OK) {
+            val intent = Intent(this, groupListActivity::class.java)
+            intent.putExtra(groupListActivity.SELECTED_GROUP, groupIDSelected)
+            startActivity(intent)
         }
         super.onActivityResult(requestCode, resultCode, data)
     }

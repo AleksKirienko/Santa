@@ -3,6 +3,7 @@ package shift.santa.features.books.presentation
 import android.content.Context
 
 import shift.santa.App
+import shift.santa.features.CreateUser.CreateUserPresenter
 import shift.santa.features.activitytwo.TwoPresenter
 import shift.santa.features.books.data.BooksRepositoryImpl
 import shift.santa.features.books.data.CreatorApi
@@ -22,6 +23,13 @@ internal object PresenterFactory {
         val rep2 = userRepository ?: createUserRepository(context).also { userRepository = it }
 
         return BookListPresenter(rep2, rep)
+    }
+
+    fun createPresenterUser(context: Context): CreateUserPresenter {
+        val rep = repository ?: createRepository(context).also { repository = it }
+        val rep2 = userRepository ?: createUserRepository(context).also { userRepository = it }
+
+        return CreateUserPresenter(rep2)
     }
 
     fun createPresenterTwo(context: Context): TwoPresenter {
