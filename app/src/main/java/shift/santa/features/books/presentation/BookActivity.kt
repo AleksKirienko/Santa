@@ -35,7 +35,6 @@ class BookActivity : BaseActivity<BookListView>(), BookListView {
     private var presenter: BookListPresenter? = null
     private var groupIDSelected: Long? = null
 
-
     override fun getMvpView(): BookListView {
         return this
     }
